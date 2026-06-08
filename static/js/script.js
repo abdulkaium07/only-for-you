@@ -9,28 +9,39 @@ window.addEventListener("load", () => {
     createBackgroundHearts();
 });
 
-loveButton.addEventListener("click", () => {
-    createEmojiBurst();
-});
+if (loveButton) {
+    loveButton.addEventListener("pointerdown", (event) => {
+        createEmojiBurst(event.clientX, event.clientY);
+
+        loveButton.classList.add("tap-effect");
+
+        setTimeout(() => {
+            loveButton.classList.remove("tap-effect");
+        }, 300);
+    });
+}
 
 function createEmojiBurst() {
-    const emojis = ["❤️", "💕", "💖", "💘", "🥰", "😍"];
+    const emojis = ["💌", "💕", "💖", "💘", "🥰", "😍", "❤️", "🌸", "✨"];
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 45; i++) {
         const emoji = document.createElement("div");
         emoji.classList.add("floating-heart");
         emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 
         emoji.style.left = Math.random() * 100 + "vw";
-        emoji.style.top = Math.random() * 75 + 15 + "vh";
+        emoji.style.top = Math.random() * 100 + "vh";
+
+        emoji.style.animationDelay = Math.random() * 0.4 + "s";
+        emoji.style.fontSize = Math.random() * 18 + 22 + "px";
 
         document.body.appendChild(emoji);
 
         setTimeout(() => {
             emoji.remove();
-        }, 2200);
+        }, 2500);
     }
-}
+} 
 
 function createBackgroundHearts() {
     setInterval(() => {
@@ -47,5 +58,5 @@ function createBackgroundHearts() {
         setTimeout(() => {
             heart.remove();
         }, 9000);
-    }, 500);
+    }, 700);
 } 
