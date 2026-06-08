@@ -1,0 +1,416 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    font-family: "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.9), transparent 25%),
+        radial-gradient(circle at 80% 10%, rgba(255, 128, 179, 0.55), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(255, 77, 148, 0.35), transparent 35%),
+        linear-gradient(135deg, #fff1f6, #ffd6e8, #ffc0d9);
+    overflow: hidden;
+    position: relative;
+}
+
+/* soft moving background glow */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    filter: blur(45px);
+    opacity: 0.55;
+    z-index: 0;
+    animation: glowMove 8s ease-in-out infinite alternate;
+}
+
+body::before {
+    background: #ff7eb3;
+    top: -80px;
+    left: -80px;
+}
+
+body::after {
+    background: #ff4d94;
+    bottom: -100px;
+    right: -90px;
+    animation-delay: 1.5s;
+}
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 14px;
+    z-index: 2;
+}
+
+/* subtle glass overlay */
+.page::before {
+    content: "";
+    position: fixed;
+    inset: 14px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* top click button */
+.top-area {
+    text-align: center;
+    cursor: pointer;
+    z-index: 5;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 12px 30px rgba(179, 0, 89, 0.15);
+    backdrop-filter: blur(10px);
+    animation: bounce 2s infinite;
+}
+
+.love-icon {
+    font-size: clamp(36px, 11vw, 48px);
+    filter: drop-shadow(0 8px 12px rgba(255, 0, 102, 0.28));
+}
+
+.top-area p {
+    margin-top: 4px;
+    font-size: clamp(13px, 4vw, 16px);
+    font-weight: 800;
+    color: #b30059;
+    letter-spacing: 0.8px;
+}
+
+/* center area */
+.message-section {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+}
+
+/* improved main message box */
+.secret-box {
+    width: min(88vw, 390px);
+    height: min(58vw, 250px);
+    min-height: 200px;
+    max-height: 250px;
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 235, 245, 0.85));
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 28px 70px rgba(179, 0, 89, 0.28),
+        inset 0 0 25px rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(14px);
+    transform: scale(0.95);
+    animation: boxEnter 1s ease forwards;
+}
+
+/* shiny border glow */
+.secret-box::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 34px;
+    background: linear-gradient(120deg, #fff, #ff80b3, #fff, #ff4d94);
+    z-index: 0;
+    opacity: 0.55;
+}
+
+/* inner white card */
+.secret-box::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.62);
+    z-index: 1;
+}
+
+/* top ribbon */
+.box-lid {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 76%;
+    height: 22px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #ff2f86, #ff8fbd, #ff2f86);
+    border-radius: 0 0 20px 20px;
+    z-index: 6;
+    box-shadow: 0 8px 20px rgba(255, 47, 134, 0.35);
+}
+
+/* opening doors */
+.box-door {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background:
+        linear-gradient(135deg, rgba(255, 47, 134, 0.96), rgba(255, 150, 199, 0.96));
+    z-index: 5;
+    transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.left-door {
+    left: 0;
+    transform-origin: left center;
+    border-right: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+.right-door {
+    right: 0;
+    transform-origin: right center;
+    border-left: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+.secret-box.open .left-door {
+    transform: rotateY(112deg);
+}
+
+.secret-box.open .right-door {
+    transform: rotateY(-112deg);
+}
+
+/* message inside */
+.inside-message {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #d63384;
+    text-align: center;
+    padding: 28px;
+    opacity: 0;
+    transform: scale(0.75) translateY(16px);
+    transition: all 1s ease 0.7s;
+}
+
+.secret-box.open .inside-message {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.inside-message h1 {
+    font-size: clamp(30px, 8vw, 46px);
+    line-height: 1.05;
+    font-weight: 950;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+    color: #e60073;
+    text-shadow:
+        0 4px 12px rgba(255, 0, 102, 0.18),
+        0 0 22px rgba(255, 128, 179, 0.45);
+}
+
+.inside-message h1::after {
+    content: " ❤️";
+    font-size: 0.72em;
+}
+
+.inside-message p {
+    max-width: 260px;
+    font-size: clamp(12px, 3.5vw, 15px);
+    line-height: 1.5;
+    color: #9c2a5d;
+    font-weight: 600;
+}
+
+/* bottom text */
+.footer-text {
+    font-size: 13px;
+    color: #9c2a5d;
+    z-index: 5;
+    margin-bottom: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.38);
+    backdrop-filter: blur(8px);
+}
+
+/* click emoji burst */
+.floating-heart {
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+    animation: floatUp 2.2s ease forwards;
+    z-index: 20;
+}
+
+/* background hearts */
+.bg-heart {
+    position: fixed;
+    color: rgba(255, 0, 102, 0.24);
+    font-size: 20px;
+    animation: bgFloat 7s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* animations */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes boxEnter {
+    from {
+        opacity: 0;
+        transform: translateY(45px) scale(0.84);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(0.95);
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-180px) scale(1.8) rotate(25deg);
+    }
+}
+
+@keyframes bgFloat {
+    0% {
+        transform: translateY(110vh) scale(0.8);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.4);
+        opacity: 0;
+    }
+}
+
+@keyframes glowMove {
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+    to {
+        transform: translate(35px, 28px) scale(1.12);
+    }
+}
+
+/* mobile responsive */
+@media (max-width: 480px) {
+    .page {
+        padding: 18px 12px;
+    }
+
+    .page::before {
+        inset: 8px;
+        border-radius: 22px;
+    }
+
+    .secret-box {
+        width: 90vw;
+        height: 215px;
+        min-height: 215px;
+    }
+
+    .inside-message {
+        padding: 22px;
+    }
+
+    .inside-message h1 {
+        font-size: 34px;
+    }
+
+    .inside-message p {
+        font-size: 13px;
+    }
+
+    .top-area {
+        padding: 8px 16px;
+    }
+}
+
+/* very small phone */
+@media (max-width: 360px) {
+    .secret-box {
+        height: 200px;
+        min-height: 200px;
+    }
+
+    .inside-message h1 {
+        font-size: 30px;
+    }
+
+    .inside-message p {
+        font-size: 12px;
+    }
+}
+
+/* landscape phone */
+@media (max-height: 500px) {
+    .page {
+        padding: 8px;
+    }
+
+    .secret-box {
+        height: 160px;
+        min-height: 160px;
+    }
+
+    .inside-message h1 {
+        font-size: 26px;
+        margin-bottom: 6px;
+    }
+
+    .inside-message p {
+        font-size: 11px;
+    }
+
+    .footer-text {
+        display: none;
+    }
+
+    .love-icon {
+        font-size: 30px;
+    }
+
+    .top-area p {
+        font-size: 12px;
+    }
+} 
