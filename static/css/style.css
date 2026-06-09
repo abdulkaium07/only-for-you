@@ -1679,3 +1679,33 @@ body {
         0 6px 16px rgba(0, 0, 0, 0.12),
         inset 0 0 10px rgba(255, 255, 255, 0.06);
 } 
+/* =========================
+   FINAL FORCE NIGHT THEME
+========================= */
+
+.flower-field,
+.rising-flower {
+    display: none !important;
+}
+
+.night-scene {
+    display: block !important;
+}
+
+.moon,
+.stars,
+.ocean,
+.moon-reflection {
+    display: block !important;
+}
+
+.tree,
+.boat {
+    display: none !important;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.12), transparent 28%),
+        linear-gradient(180deg, #07102b 0%, #111b46 42%, #132b57 70%, #082038 100%) !important;
+} 
