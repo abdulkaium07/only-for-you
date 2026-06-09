@@ -820,3 +820,72 @@ body {
 .inside-message {
     background: transparent;
 } 
+/* =========================
+   Smooth Gentle Flower Floating
+========================= */
+
+.flower-field {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.flower-field span {
+    position: absolute;
+    font-size: 26px;
+    opacity: 0.48;
+    filter: drop-shadow(0 8px 14px rgba(140, 0, 80, 0.18));
+    animation: smoothFlowerFloat 14s ease-in-out infinite;
+}
+
+/* soft positions */
+.flower-field span:nth-child(1) { top: 10%; left: 7%; animation-delay: 0s; }
+.flower-field span:nth-child(2) { top: 18%; left: 25%; animation-delay: 1.5s; }
+.flower-field span:nth-child(3) { top: 14%; right: 12%; animation-delay: 3s; }
+.flower-field span:nth-child(4) { top: 42%; left: 8%; animation-delay: 2s; }
+.flower-field span:nth-child(5) { top: 45%; right: 16%; animation-delay: 4s; }
+.flower-field span:nth-child(6) { top: 58%; left: 28%; animation-delay: 5s; }
+.flower-field span:nth-child(7) { top: 66%; right: 28%; animation-delay: 2.8s; }
+.flower-field span:nth-child(8) { bottom: 16%; left: 10%; animation-delay: 4.5s; }
+.flower-field span:nth-child(9) { bottom: 12%; right: 10%; animation-delay: 6s; }
+.flower-field span:nth-child(10) { bottom: 26%; left: 42%; animation-delay: 3.5s; }
+.flower-field span:nth-child(11) { top: 30%; right: 34%; animation-delay: 5.5s; }
+.flower-field span:nth-child(12) { bottom: 36%; right: 45%; animation-delay: 7s; }
+
+/* slow smooth movement */
+@keyframes smoothFlowerFloat {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: translate(8px, -10px) rotate(3deg) scale(1.03);
+    }
+
+    50% {
+        transform: translate(-6px, -18px) rotate(-3deg) scale(1.05);
+    }
+
+    75% {
+        transform: translate(7px, -9px) rotate(2deg) scale(1.02);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+}
+
+/* phone-e aro light and smooth */
+@media (max-width: 600px) {
+    .flower-field span {
+        font-size: 22px;
+        opacity: 0.38;
+        animation-duration: 18s;
+    }
+
+    .flower-field span:nth-child(n+9) {
+        display: none;
+    }
+} 
