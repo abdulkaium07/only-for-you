@@ -751,3 +751,109 @@ body::after {
     content: " ❤️";
     font-size: 0.68em;
 } 
+/* =========================
+   Final Performance + Smooth Open Fix
+========================= */
+
+/* smoother overall rendering */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+/* reduce heavy effects slightly */
+.secret-box {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* smooth door opening */
+.box-door {
+    will-change: transform, opacity;
+    transition:
+        transform 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 1.8s ease;
+}
+
+/* left/right door will open softly */
+.secret-box.open .left-door {
+    transform: translateX(-104%) rotateY(12deg);
+    opacity: 0.96;
+}
+
+.secret-box.open .right-door {
+    transform: translateX(104%) rotateY(-12deg);
+    opacity: 0.96;
+}
+
+/* message appears softer */
+.inside-message {
+    transition:
+        opacity 1.4s ease 1.15s,
+        transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.15s;
+}
+
+.secret-box.open .inside-message {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* emoji animation performance */
+.floating-heart,
+.bg-heart {
+    will-change: transform, opacity;
+}
+
+/* phone performance fix */
+@media (max-width: 600px) {
+    body::before,
+    body::after {
+        filter: blur(28px);
+        opacity: 0.28;
+    }
+
+    .page::before {
+        inset: 8px;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+
+    .secret-box {
+        box-shadow:
+            0 22px 55px rgba(180, 0, 90, 0.25),
+            inset 0 0 18px rgba(255, 255, 255, 0.65);
+        backdrop-filter: none;
+    }
+
+    .secret-box::before {
+        animation: none;
+    }
+
+    .top-area {
+        backdrop-filter: none;
+        box-shadow: 0 12px 28px rgba(179, 0, 89, 0.14);
+    }
+
+    .bg-heart {
+        opacity: 0.55;
+    }
+}
+
+/* very small phones */
+@media (max-width: 380px) {
+    .secret-box {
+        width: 91vw;
+        min-height: 220px;
+    }
+
+    .inside-message h1 {
+        font-size: 34px;
+    }
+
+    .inside-message p {
+        font-size: 12.5px;
+    }
+} 
