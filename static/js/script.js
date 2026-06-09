@@ -1,9 +1,8 @@
 const secretBox = document.getElementById("secretBox");
-
 const isMobile = window.matchMedia("(max-width: 600px)").matches;
 
 if (secretBox) {
-    secretBox.addEventListener("click", () => {
+    secretBox.addEventListener("pointerdown", () => {
         openBox();
     });
 
@@ -15,13 +14,15 @@ if (secretBox) {
 }
 
 function openBox() {
+    if (!secretBox) return;
+
     secretBox.classList.add("open");
     createCelebration();
 }
 
 function createCelebration() {
-    const emojis = ["❤️", "💕", "💖", "💘", "🌸", "🌷", "✨", "🥰"];
-    const count = isMobile ? 18 : 38;
+    const emojis = ["❤️", "💕", "💖", "💘", "✨", "🥰"];
+    const count = isMobile ? 10 : 22;
 
     for (let i = 0; i < count; i++) {
         const emoji = document.createElement("div");
@@ -31,15 +32,15 @@ function createCelebration() {
         const startX = Math.random() * window.innerWidth;
         const startY = Math.random() * window.innerHeight;
 
-        const moveX = Math.random() * 260 - 130;
-        const moveY = -(Math.random() * 220 + 90);
+        const moveX = Math.random() * 220 - 110;
+        const moveY = -(Math.random() * 190 + 80);
 
         emoji.style.left = startX + "px";
         emoji.style.top = startY + "px";
         emoji.style.setProperty("--move-x", moveX + "px");
         emoji.style.setProperty("--move-y", moveY + "px");
-        emoji.style.animationDelay = Math.random() * 0.25 + "s";
-        emoji.style.fontSize = Math.random() * 12 + 20 + "px";
+        emoji.style.animationDelay = Math.random() * 0.2 + "s";
+        emoji.style.fontSize = Math.random() * 10 + 20 + "px";
 
         document.body.appendChild(emoji);
 
