@@ -1709,3 +1709,397 @@ body {
         radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.12), transparent 28%),
         linear-gradient(180deg, #07102b 0%, #111b46 42%, #132b57 70%, #082038 100%) !important;
 } 
+/* =========================
+   FINAL NIGHT THEME LOCK
+========================= */
+
+.flower-field,
+.rising-flower {
+    display: none !important;
+}
+
+.night-scene {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+}
+
+.moon,
+.stars,
+.ocean,
+.moon-reflection {
+    display: block !important;
+}
+
+.tree,
+.boat {
+    display: none !important;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.12), transparent 28%),
+        linear-gradient(180deg, #07102b 0%, #111b46 42%, #132b57 70%, #082038 100%) !important;
+}
+
+.page {
+    position: relative !important;
+    z-index: 2 !important;
+} 
+/* =========================
+   Final Mobile Layout Fix
+========================= */
+
+@media (max-width: 600px) {
+
+    .page {
+        padding: 22px 12px 18px !important;
+        justify-content: space-between !important;
+    }
+
+    /* top card phone-e properly fit */
+    .intro-text {
+        width: 88vw !important;
+        max-width: 88vw !important;
+        padding: 14px 12px !important;
+        border-radius: 22px !important;
+        overflow: hidden !important;
+    }
+
+    .dedicated-text {
+        font-size: 10px !important;
+        padding: 5px 11px !important;
+        margin-bottom: 8px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .intro-text h2 {
+        font-size: 27px !important;
+        line-height: 1.12 !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+    }
+
+    .hint-text {
+        display: inline-block !important;
+        font-size: 11px !important;
+        padding: 5px 11px !important;
+        margin-top: 9px !important;
+        white-space: normal !important;
+    }
+
+    /* moon phone-e top text-er sathe overlap korbe na */
+    .moon {
+        width: 52px !important;
+        height: 52px !important;
+        top: 23% !important;
+        right: 7% !important;
+        opacity: 0.92 !important;
+    }
+
+    /* message box phone-e better */
+    .secret-box {
+        width: 88vw !important;
+        height: 235px !important;
+        min-height: 235px !important;
+        max-height: 235px !important;
+    }
+
+    .inside-message h1 {
+        font-size: 42px !important;
+        white-space: nowrap !important;
+    }
+
+    .inside-message p {
+        font-size: 12px !important;
+        max-width: 270px !important;
+        white-space: normal !important;
+        line-height: 1.45 !important;
+    }
+
+    .footer-text {
+        font-size: 11px !important;
+        padding: 7px 12px !important;
+    }
+} 
+/* =========================
+   Phone Message Text Bigger Fix
+========================= */
+
+@media (max-width: 600px) {
+    .inside-message h1 {
+        font-size: 48px !important;
+        line-height: 1.05 !important;
+        white-space: nowrap !important;
+    }
+
+    .heart-word {
+        margin: 0 5px !important;
+    }
+
+    .inside-message p {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        max-width: 300px !important;
+        white-space: normal !important;
+        font-weight: 750 !important;
+    }
+} 
+/* =========================
+   Mobile Moon Overlap Fix
+========================= */
+
+@media (max-width: 600px) {
+
+    /* top text box always front-e thakbe */
+    .intro-text {
+        position: relative !important;
+        z-index: 5 !important;
+    }
+
+    /* moon top card-er sathe overlap korbe na */
+    .moon {
+        width: 48px !important;
+        height: 48px !important;
+        top: 25% !important;
+        right: 8% !important;
+        z-index: 1 !important;
+        opacity: 0.9 !important;
+    }
+
+    /* moon reflection moon-er niche adjust */
+    .moon-reflection {
+        left: 78% !important;
+        width: 90px !important;
+        opacity: 0.42 !important;
+    }
+} 
+/* =========================
+   Top Intro Box Smaller Fix
+========================= */
+
+.intro-text {
+    max-width: 360px !important;
+    padding: 11px 16px !important;
+    border-radius: 22px !important;
+}
+
+.dedicated-text {
+    font-size: 10px !important;
+    padding: 4px 11px !important;
+    margin-bottom: 6px !important;
+}
+
+.intro-text h2 {
+    font-size: clamp(22px, 4.8vw, 30px) !important;
+    line-height: 1.12 !important;
+}
+
+.hint-text {
+    font-size: 11px !important;
+    padding: 4px 11px !important;
+    margin-top: 7px !important;
+}
+
+/* phone version */
+@media (max-width: 600px) {
+    .intro-text {
+        width: 82vw !important;
+        max-width: 82vw !important;
+        padding: 11px 10px !important;
+        border-radius: 20px !important;
+    }
+
+    .dedicated-text {
+        font-size: 9px !important;
+        padding: 4px 10px !important;
+    }
+
+    .intro-text h2 {
+        font-size: 23px !important;
+        line-height: 1.12 !important;
+    }
+
+    .hint-text {
+        font-size: 10px !important;
+        padding: 4px 10px !important;
+    }
+} 
+/* =========================
+   Final Golden Moonlight Water + Soft Waves
+========================= */
+
+.ocean {
+    height: 35% !important;
+    overflow: hidden !important;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(38, 92, 138, 0.14) 0%,
+            rgba(20, 68, 110, 0.68) 24%,
+            rgba(9, 45, 82, 0.94) 62%,
+            rgba(4, 24, 47, 1) 100%
+        ) !important;
+}
+
+/* golden moonlight on water */
+.moon-reflection {
+    position: absolute !important;
+    top: -7% !important;
+    left: 82% !important;
+    width: 190px !important;
+    height: 125% !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 231, 165, 0.34) 0%,
+            rgba(255, 211, 120, 0.24) 18%,
+            rgba(255, 234, 180, 0.16) 38%,
+            rgba(255, 214, 120, 0.08) 65%,
+            rgba(255, 255, 255, 0) 100%
+        ) !important;
+
+    filter: blur(11px) !important;
+    opacity: 0.58 !important;
+    animation: moonWaterGlow 6s ease-in-out infinite !important;
+    pointer-events: none !important;
+}
+
+/* visible soft wave texture */
+.ocean::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            rgba(255, 226, 160, 0.14) 0px,
+            rgba(255, 226, 160, 0.10) 2px,
+            transparent 5px,
+            transparent 20px
+        );
+    opacity: 0.22;
+    transform: scaleX(1.45);
+    animation: softWaterWaves 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* wave layers support */
+.wave-layer,
+.water-ripple,
+.wave {
+    position: absolute !important;
+    left: -10% !important;
+    width: 120% !important;
+    border-radius: 50% !important;
+    background: rgba(255, 225, 160, 0.09) !important;
+    pointer-events: none !important;
+}
+
+.wave-layer-1,
+.ripple-one,
+.wave-one {
+    top: 9% !important;
+    height: 36px !important;
+    opacity: 0.30 !important;
+    filter: blur(0.8px) !important;
+    animation: waveSlowOne 6s ease-in-out infinite !important;
+}
+
+.wave-layer-2,
+.ripple-two,
+.wave-two {
+    top: 25% !important;
+    height: 50px !important;
+    opacity: 0.22 !important;
+    filter: blur(1px) !important;
+    animation: waveSlowTwo 8s ease-in-out infinite reverse !important;
+}
+
+.wave-layer-3,
+.ripple-three,
+.wave-three {
+    top: 46% !important;
+    height: 65px !important;
+    opacity: 0.14 !important;
+    filter: blur(1.4px) !important;
+    animation: waveSlowThree 10s ease-in-out infinite !important;
+}
+
+@keyframes waveSlowOne {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(32px) translateY(-3px);
+    }
+}
+
+@keyframes waveSlowTwo {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-26px) translateY(4px);
+    }
+}
+
+@keyframes waveSlowThree {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(22px) translateY(-3px);
+    }
+}
+
+@keyframes softWaterWaves {
+    0%, 100% {
+        transform: translateX(0) scaleX(1.45);
+        opacity: 0.17;
+    }
+
+    50% {
+        transform: translateX(30px) scaleX(1.5);
+        opacity: 0.28;
+    }
+}
+
+@keyframes moonWaterGlow {
+    0%, 100% {
+        transform: translateX(-50%) scaleX(1);
+        opacity: 0.48;
+    }
+
+    50% {
+        transform: translateX(-50%) scaleX(1.12);
+        opacity: 0.66;
+    }
+}
+
+/* phone safe */
+@media (max-width: 600px) {
+    .moon-reflection {
+        left: 78% !important;
+        width: 110px !important;
+        opacity: 0.44 !important;
+    }
+
+    .ocean::after {
+        opacity: 0.16 !important;
+        animation-duration: 10s !important;
+    }
+
+    .wave-layer-3,
+    .ripple-three,
+    .wave-three {
+        display: none !important;
+    }
+} 
