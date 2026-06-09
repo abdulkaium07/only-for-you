@@ -5,40 +5,51 @@
     <title>A Secret Message</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="static/css/style.css"> 
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
 
-    <div class="background-hearts"></div>
+    <div class="flower-field">
+        <span>🌸</span>
+        <span>🌷</span>
+        <span>🌺</span>
+        <span>🌸</span>
+        <span>🌷</span>
+        <span>🌺</span>
+    </div>
 
     <main class="page">
 
-    <section class="top-area" id="loveButton">
-    <div class="love-icon">💌</div>
-    </section>
+        <section class="intro-text">
+    <p class="dedicated-text">For Someone Special 💗</p>
+    <h2>A message from my heart</h2>
+    <p class="hint-text">Tap the message box to open it</p>
+        </section>
 
         <section class="message-section">
 
-            <div class="secret-box" id="secretBox">
+            <div class="secret-box" id="secretBox" role="button" tabindex="0">
 
-                <div class="box-lid"></div>
+            <div class="closed-text">
+    <span class="closed-sub">Tap here</span>
+                </div>
 
                 <div class="box-door left-door"></div>
                 <div class="box-door right-door"></div>
 
                 <div class="inside-message">
-                    <h1 id="messageText">I Love You</h1>
-                    <p id="subText">A little piece of my heart, made only for you.</p> 
-                </div>
+    <h1 id="messageText">I <span class="heart-word">❤️</span> You</h1>
+    <p id="subText">Straight from my heart, made only for you. 💗</p>
+            </div>
 
             </div>
 
         </section>
 
-        <p class="footer-text">Made with love 💕</p>
+        <p class="footer-text">From my heart, with sincerity 💗</p> 
 
     </main>
 
-    <script src="static/js/script.js"></script> 
+    <script src="static/js/script.js"></script>
 </body>
-</html> 
+</html>  
