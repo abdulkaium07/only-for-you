@@ -78,6 +78,31 @@
 
     </main>
 
-    <script src="static/js/script.js"></script>
+    <script src="static/js/script.js"></script> 
+    <!-- Secret Name + Message Popup -->
+<div class="secret-popup" id="secretPopup">
+    <div class="secret-popup-card">
+
+        <button class="secret-close-btn" id="secretCloseBtn">×</button>
+
+        <div class="secret-name-step" id="secretNameStep">
+            <h3>What Is Your Name? 💌</h3>
+            <input type="text" id="visitorNameInput" placeholder="Write Your Name">
+            <button id="visitorNextBtn">Next</button>
+        </div>
+
+        <div class="secret-message-step" id="secretMessageStep">
+            <h3 id="visitorGreeting">Write Your Message 💗</h3>
+            <textarea id="visitorMessageInput" placeholder="Write Your Message Here..."></textarea>
+            <button id="visitorDoneBtn">Done</button>
+        </div>
+
+        <div class="secret-thanks-step" id="secretThanksStep">
+            <h3>Message Saved In This Moment 💖</h3>
+            <p id="visitorFinalText"></p>
+        </div>
+
+    </div>
+</div> 
 </body>
 </html> 

@@ -2865,3 +2865,812 @@ body {
         height: 38px !important;
     }
 } 
+/* =========================
+   FINAL MOON UP + HINT TIMING FIX
+   Paste at VERY BOTTOM of style.css
+========================= */
+
+/* Moon ektu upore */
+.moon {
+    top: 9% !important;
+    right: 10% !important;
+}
+
+/* phone-e moon safe but ektu upore */
+@media (max-width: 600px) {
+    .moon {
+        width: clamp(38px, 12vw, 54px) !important;
+        height: clamp(38px, 12vw, 54px) !important;
+        top: clamp(185px, 26svh, 275px) !important;
+        right: clamp(18px, 8vw, 40px) !important;
+        z-index: 1 !important;
+        opacity: 0.92 !important;
+    }
+}
+
+/* very small phone-eo top box-er moddhe dhukbe na */
+@media (max-width: 390px) and (max-height: 760px) {
+    .moon {
+        top: 205px !important;
+        width: 38px !important;
+        height: 38px !important;
+        right: 7% !important;
+    }
+}
+
+/* Hint line perfect timing */
+#boxOpenHint {
+    display: inline-block !important;
+    opacity: 1 !important;
+    max-height: 40px !important;
+    overflow: hidden !important;
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s ease,
+        max-height 0.75s ease,
+        padding 0.75s ease,
+        margin 0.75s ease !important;
+}
+
+/* box open hole sathe sathe hide korbe na */
+.message-section:has(.secret-box.open) #boxOpenHint:not(.hide) {
+    display: inline-block !important;
+    opacity: 1 !important;
+    max-height: 40px !important;
+    padding: 5px 14px !important;
+    margin: 0 auto 4px auto !important;
+}
+
+/* JS delay er por smooth hide hobe */
+#boxOpenHint.hide {
+    opacity: 0 !important;
+    transform: translateY(-10px) scale(0.94) !important;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+} 
+/* =========================
+   FINAL HINT REPLACE LOVE BURST EFFECT
+========================= */
+
+#boxOpenHint {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: visible !important;
+
+    min-width: 210px !important;
+    min-height: 28px !important;
+
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 850 !important;
+    text-align: center !important;
+
+    padding: 6px 16px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 112, 172, 0.18) !important;
+    border: 1px solid rgba(255, 210, 230, 0.42) !important;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.22),
+        inset 0 0 10px rgba(255, 255, 255, 0.08) !important;
+
+    transition: 0.35s ease !important;
+}
+
+/* আগের hide/display none code থাকলেও override করবে */
+#boxOpenHint.hide,
+body .message-section:has(.secret-box.open) #boxOpenHint {
+    display: inline-flex !important;
+    opacity: 1 !important;
+    max-height: 45px !important;
+    padding: 6px 16px !important;
+    margin: 0 auto 4px auto !important;
+    overflow: visible !important;
+}
+
+/* box open হলে text বদলে cute emoji effect */
+#boxOpenHint.love-burst-mode {
+    min-width: 74px !important;
+    padding: 6px 14px !important;
+
+    background: rgba(255, 95, 150, 0.22) !important;
+    border-color: rgba(255, 220, 235, 0.65) !important;
+
+    animation: hintSoftPop 0.65s ease forwards;
+}
+
+.hint-mail-emoji {
+    display: inline-block;
+    font-size: 22px;
+    line-height: 1;
+    animation: mailPopBurst 1.4s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 130, 180, 0.55));
+}
+
+.hint-love {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 17px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: hintLoveFly 1.45s ease-out forwards;
+}
+
+@keyframes hintSoftPop {
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.14);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes mailPopBurst {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    35% {
+        transform: scale(1.18) rotate(-7deg);
+    }
+
+    65% {
+        transform: scale(1.08) rotate(7deg);
+    }
+}
+
+@keyframes hintLoveFly {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.4);
+    }
+
+    18% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(
+                calc(-50% + var(--love-x)),
+                calc(-50% + var(--love-y))
+            )
+            scale(1.15);
+    }
+}
+
+/* phone safe */
+@media (max-width: 600px) {
+    #boxOpenHint {
+        min-width: 185px !important;
+        font-size: 11px !important;
+        padding: 5px 13px !important;
+    }
+
+    #boxOpenHint.love-burst-mode {
+        min-width: 66px !important;
+    }
+
+    .hint-mail-emoji {
+        font-size: 20px !important;
+    }
+
+    .hint-love {
+        font-size: 15px !important;
+    }
+} 
+/* =========================
+   Secret Name + Message Popup
+========================= */
+
+#boxOpenHint {
+    cursor: pointer !important;
+    user-select: none !important;
+}
+
+.secret-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(3, 8, 25, 0.46);
+    backdrop-filter: blur(7px);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.35s ease;
+}
+
+.secret-popup.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.secret-popup-card {
+    position: relative;
+    width: min(88vw, 360px);
+    padding: 24px 20px;
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(44, 57, 93, 0.94),
+            rgba(86, 55, 91, 0.92)
+        );
+
+    border: 1.5px solid rgba(255, 220, 235, 0.45);
+
+    box-shadow:
+        0 0 35px rgba(255, 120, 175, 0.24),
+        0 25px 70px rgba(0, 0, 0, 0.45),
+        inset 0 0 18px rgba(255, 255, 255, 0.08);
+
+    text-align: center;
+
+    transform: scale(0.88) translateY(18px);
+    transition: 0.35s ease;
+}
+
+.secret-popup.show .secret-popup-card {
+    transform: scale(1) translateY(0);
+}
+
+.secret-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.secret-popup-card h3 {
+    color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 16px;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+}
+
+.secret-popup-card input,
+.secret-popup-card textarea {
+    width: 100%;
+    border: 1.5px solid rgba(255, 220, 235, 0.55);
+    outline: none;
+
+    border-radius: 18px;
+    padding: 13px 14px;
+    margin-bottom: 13px;
+
+    background: rgba(255, 255, 255, 0.93);
+    color: #3d2140;
+
+    font-size: 14px;
+    font-weight: 750;
+    text-align: center;
+}
+
+.secret-popup-card textarea {
+    height: 105px;
+    resize: none;
+    text-align: left;
+    line-height: 1.45;
+}
+
+.secret-popup-card button:not(.secret-close-btn) {
+    border: none;
+    border-radius: 999px;
+    padding: 11px 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 219, 235, 1),
+            rgba(255, 112, 172, 0.92)
+        );
+
+    color: #5c1838;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.25),
+        inset 0 0 10px rgba(255, 255, 255, 0.35);
+}
+
+.secret-message-step,
+.secret-thanks-step {
+    display: none;
+}
+
+.secret-message-step.show,
+.secret-thanks-step.show {
+    display: block;
+}
+
+#visitorFinalText {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 750;
+    line-height: 1.5;
+} 
+/* =========================
+   FINAL CLICKABLE SECRET POPUP STYLE
+========================= */
+
+#boxOpenHint {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 999 !important;
+}
+
+#boxOpenHint * {
+    pointer-events: none !important;
+}
+
+.secret-final-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(3, 8, 25, 0.48);
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.35s ease;
+}
+
+.secret-final-popup.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.secret-final-card {
+    position: relative;
+    width: min(88vw, 360px);
+    padding: 24px 20px;
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(42, 55, 90, 0.96),
+            rgba(87, 54, 92, 0.94)
+        );
+
+    border: 1.5px solid rgba(255, 220, 235, 0.48);
+
+    box-shadow:
+        0 0 35px rgba(255, 120, 175, 0.28),
+        0 25px 70px rgba(0, 0, 0, 0.48),
+        inset 0 0 18px rgba(255, 255, 255, 0.08);
+
+    text-align: center;
+    transform: scale(0.88) translateY(18px);
+    transition: 0.35s ease;
+}
+
+.secret-final-popup.show .secret-final-card {
+    transform: scale(1) translateY(0);
+}
+
+.secret-final-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.secret-final-card h3 {
+    color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 16px;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+}
+
+.secret-final-card input,
+.secret-final-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    border: 1.5px solid rgba(255, 220, 235, 0.58);
+    outline: none;
+
+    border-radius: 18px;
+    padding: 13px 14px;
+    margin-bottom: 13px;
+
+    background: rgba(255, 255, 255, 0.94);
+    color: #3d2140;
+
+    font-size: 14px;
+    font-weight: 750;
+    text-align: center;
+}
+
+.secret-final-card textarea {
+    height: 105px;
+    resize: none;
+    text-align: left;
+    line-height: 1.45;
+}
+
+.secret-final-card button:not(.secret-final-close) {
+    border: none;
+    border-radius: 999px;
+    padding: 11px 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 219, 235, 1),
+            rgba(255, 112, 172, 0.92)
+        );
+
+    color: #5c1838;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.25),
+        inset 0 0 10px rgba(255, 255, 255, 0.35);
+}
+
+.secret-final-hidden {
+    display: none !important;
+}
+
+#finalThanksText {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 750;
+    line-height: 1.5;
+} 
+/* =========================
+   FINAL LETTER CLICK RULE FIX
+========================= */
+
+/* Before open: hint dekha jabe but clickable hobe na */
+#boxOpenHint:not(.love-burst-mode) {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+/* After open: emoji letter clickable hobe */
+#boxOpenHint.love-burst-mode {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    opacity: 1 !important;
+    max-height: 45px !important;
+    padding: 6px 16px !important;
+    margin: 0 auto 4px auto !important;
+    overflow: visible !important;
+}
+
+/* Old hide code thakleo emoji hidden hobe na */
+#boxOpenHint.love-burst-mode.hide,
+.message-section:has(.secret-box.open) #boxOpenHint.love-burst-mode {
+    display: inline-flex !important;
+    opacity: 1 !important;
+    max-height: 45px !important;
+    padding: 6px 16px !important;
+    margin: 0 auto 4px auto !important;
+    overflow: visible !important;
+} 
+/* =========================
+   Tap Me Letter Button Final Look
+========================= */
+
+#boxOpenHint.love-burst-mode {
+    min-width: 96px !important;
+    gap: 6px !important;
+    padding: 6px 15px !important;
+}
+
+.hint-tap-text {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.2px !important;
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.35) !important;
+}
+
+.hint-mail-emoji {
+    font-size: 18px !important;
+}
+
+/* small soft attention effect */
+#boxOpenHint.love-burst-mode {
+    animation: tapLetterGlow 1.8s ease-in-out infinite !important;
+}
+
+@keyframes tapLetterGlow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.22),
+            0 0 10px rgba(255, 135, 190, 0.28);
+    }
+
+    50% {
+        transform: scale(1.04);
+        box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.22),
+            0 0 18px rgba(255, 135, 190, 0.48);
+    }
+}
+
+@media (max-width: 600px) {
+    #boxOpenHint.love-burst-mode {
+        min-width: 88px !important;
+        padding: 5px 13px !important;
+    }
+
+    .hint-tap-text {
+        font-size: 11px !important;
+    }
+
+    .hint-mail-emoji {
+        font-size: 17px !important;
+    }
+} 
+/* Tap Me hint - initially hidden */
+#boxOpenHint {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+}
+
+/* show smoothly */
+#boxOpenHint.show-hint {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+} 
+/* =========================
+   Tap Me 5 Second Smooth Delay
+========================= */
+
+/* box open হওয়ার পর Tap Me initially hidden থাকবে */
+#boxOpenHint.love-burst-mode:not(.show-hint) {
+    opacity: 0 !important;
+    transform: translateY(-12px) scale(0.92) !important;
+    pointer-events: none !important;
+}
+
+/* 5 second পর smooth show হবে */
+#boxOpenHint.love-burst-mode.show-hint {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    pointer-events: auto !important;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease !important;
+} 
+/* =========================
+   FINAL TAP ME SUPER SMOOTH SHOW
+========================= */
+
+/* Tap Me hidden state */
+#boxOpenHint.love-burst-mode {
+    opacity: 0 !important;
+    transform: translateY(-14px) scale(0.88) !important;
+    pointer-events: none !important;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) !important;
+
+    animation: none !important;
+}
+
+/* 5 second por smooth show */
+#boxOpenHint.love-burst-mode.show-hint {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    pointer-events: auto !important;
+}
+
+/* show complete howar por soft pulse */
+#boxOpenHint.love-burst-mode.show-hint.pulse-ready {
+    animation: tapMeSoftGlow 2.2s ease-in-out infinite !important;
+}
+
+@keyframes tapMeSoftGlow {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.22),
+            0 0 10px rgba(255, 135, 190, 0.28);
+    }
+
+    50% {
+        transform: translateY(0) scale(1.035);
+        box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.22),
+            0 0 18px rgba(255, 135, 190, 0.48);
+    }
+} 
+/* =========================
+   TAP ME COUNTDOWN + SMOOTH SHOW
+========================= */
+
+#boxOpenHint.love-burst-mode {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.88);
+    pointer-events: none;
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    animation: none;
+}
+
+/* countdown bubble visible */
+#boxOpenHint.love-burst-mode.show-countdown {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: none;
+}
+
+/* final Tap Me visible */
+#boxOpenHint.love-burst-mode.show-hint {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Tap Me show howar por soft pulse */
+#boxOpenHint.love-burst-mode.show-hint.pulse-ready {
+    animation: tapMeSoftGlow 2.2s ease-in-out infinite;
+}
+
+@keyframes tapMeSoftGlow {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.22),
+            0 0 10px rgba(255, 135, 190, 0.28);
+    }
+
+    50% {
+        transform: translateY(0) scale(1.035);
+        box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.22),
+            0 0 18px rgba(255, 135, 190, 0.48);
+    }
+}
+
+/* countdown text style */
+.countdown-text {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+    display: inline-block;
+    min-width: 28px;
+    text-align: center;
+}
+
+/* optional small s style */
+.countdown-text span {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* final Tap Me text */
+.hint-tap-text {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.hint-mail-emoji {
+    font-size: 18px;
+    margin-left: 8px;
+} 
+/* =========================
+   FINAL TIMER THEN TAP ME
+========================= */
+
+#boxOpenHint.love-burst-mode {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    pointer-events: none !important;
+    transition: opacity 0.9s ease, transform 0.9s ease !important;
+}
+
+/* countdown time */
+#boxOpenHint.countdown-mode {
+    pointer-events: none !important;
+    min-width: 70px !important;
+    padding: 6px 15px !important;
+}
+
+/* Tap Me hidden until timer finished */
+#boxOpenHint.love-burst-mode:not(.show-hint) .hint-tap-text,
+#boxOpenHint.love-burst-mode:not(.show-hint) .hint-mail-emoji {
+    display: none !important;
+}
+
+/* final Tap Me visible */
+#boxOpenHint.show-hint {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    animation: tapMeSoftGlow 2.2s ease-in-out infinite !important;
+}
+
+.countdown-text {
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.4px !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+}
+
+.countdown-text span {
+    font-size: 11px !important;
+    margin-left: 2px !important;
+    opacity: 0.9 !important;
+}
+
+@keyframes tapMeSoftGlow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.22),
+            0 0 10px rgba(255, 135, 190, 0.28);
+    }
+
+    50% {
+        transform: scale(1.04);
+        box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.22),
+            0 0 18px rgba(255, 135, 190, 0.48);
+    }
+} 
