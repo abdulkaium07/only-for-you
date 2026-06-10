@@ -2372,3 +2372,496 @@ body {
         opacity: 0.26 !important;
     }
 } 
+/* =========================
+   FINAL HINT POSITION FIX
+========================= */
+
+/* old hint top box theke remove */
+.intro-text .hint-text,
+.hint-text {
+    display: none !important;
+}
+
+/* message section center control */
+.message-section {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 14px !important;
+    z-index: 10 !important;
+}
+
+/* new hint above message box */
+#boxOpenHint {
+    display: inline-block !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 0 4px 0 !important;
+
+    padding: 6px 16px !important;
+    border-radius: 999px !important;
+
+    background: rgba(255, 112, 172, 0.18) !important;
+    border: 1px solid rgba(255, 210, 230, 0.42) !important;
+
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 850 !important;
+    letter-spacing: 0.25px !important;
+    text-align: center !important;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.24),
+        inset 0 0 10px rgba(255, 255, 255, 0.08) !important;
+
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.35) !important;
+    transition: 0.35s ease !important;
+}
+
+/* box open hole hint hide */
+#boxOpenHint.hide {
+    opacity: 0 !important;
+    transform: translateY(-8px) scale(0.94) !important;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+}
+
+/* modern browser backup: box open thakle hint hide */
+.message-section:has(.secret-box.open) #boxOpenHint {
+    opacity: 0 !important;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+
+/* phone safe */
+@media (max-width: 600px) {
+    #boxOpenHint {
+        font-size: 11px !important;
+        padding: 5px 13px !important;
+        max-width: 82vw !important;
+        margin-bottom: 2px !important;
+    }
+
+    .message-section {
+        gap: 10px !important;
+    }
+} 
+/* =========================
+   FINAL ALL PHONE RESPONSIVE LOCK
+   Works for small + big phones
+========================= */
+
+/* full page stable height */
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden !important;
+}
+
+.page {
+    min-height: 100svh !important;
+    width: 100% !important;
+    padding: 26px 14px 18px !important;
+
+    display: grid !important;
+    grid-template-rows: auto 1fr auto !important;
+    align-items: center !important;
+    justify-items: center !important;
+
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* top box stable */
+.intro-text {
+    width: min(86vw, 390px) !important;
+    max-width: 390px !important;
+    padding: clamp(11px, 2.4vw, 16px) clamp(12px, 3vw, 20px) !important;
+    border-radius: clamp(20px, 5vw, 28px) !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+.dedicated-text {
+    font-size: clamp(8px, 2.2vw, 11px) !important;
+    padding: 4px 11px !important;
+    margin-bottom: 7px !important;
+}
+
+.intro-text h2 {
+    font-size: clamp(23px, 6.4vw, 31px) !important;
+    line-height: 1.14 !important;
+    text-align: center !important;
+}
+
+/* message section center */
+.message-section {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    position: relative !important;
+    z-index: 8 !important;
+}
+
+/* message box responsive size */
+.secret-box {
+    width: min(88vw, 460px) !important;
+    height: clamp(220px, 31vh, 280px) !important;
+    min-height: 220px !important;
+    max-height: 280px !important;
+    border-radius: clamp(30px, 8vw, 46px) !important;
+}
+
+/* tap hint above message box */
+#boxOpenHint {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    display: inline-block !important;
+
+    color: #ffffff !important;
+    font-size: clamp(10px, 2.8vw, 13px) !important;
+    font-weight: 850 !important;
+    text-align: center !important;
+
+    padding: 5px 13px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 112, 172, 0.18) !important;
+    border: 1px solid rgba(255, 210, 230, 0.42) !important;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22) !important;
+}
+
+#boxOpenHint.hide,
+.message-section:has(.secret-box.open) #boxOpenHint {
+    display: none !important;
+}
+
+/* inside text responsive */
+.inside-message h1 {
+    font-size: clamp(42px, 12vw, 62px) !important;
+    line-height: 1.05 !important;
+    white-space: nowrap !important;
+}
+
+.heart-word {
+    margin: 0 clamp(5px, 2vw, 11px) !important;
+}
+
+.inside-message p,
+#subText {
+    font-size: clamp(11px, 3.2vw, 15px) !important;
+    max-width: 88% !important;
+    line-height: 1.35 !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    white-space: normal !important;
+}
+
+/* footer stable */
+.footer-text {
+    max-width: 88vw !important;
+    font-size: clamp(10px, 2.7vw, 13px) !important;
+    padding: 7px 13px !important;
+    margin-bottom: 0 !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* moon safe for all phones */
+@media (max-width: 600px) {
+    .moon {
+        width: clamp(38px, 12vw, 55px) !important;
+        height: clamp(38px, 12vw, 55px) !important;
+
+        /* moon always top box-er niche safe thakbe */
+        top: clamp(235px, 31svh, 330px) !important;
+        right: clamp(20px, 8vw, 42px) !important;
+
+        z-index: 1 !important;
+        opacity: 0.9 !important;
+    }
+
+    .moon-reflection {
+        left: 78% !important;
+        width: clamp(85px, 28vw, 125px) !important;
+        opacity: 0.45 !important;
+    }
+}
+
+/* very small phones */
+@media (max-width: 390px) and (max-height: 760px) {
+    .page {
+        padding-top: 18px !important;
+        padding-bottom: 13px !important;
+    }
+
+    .intro-text {
+        width: 84vw !important;
+        padding: 10px 10px !important;
+    }
+
+    .intro-text h2 {
+        font-size: 22px !important;
+    }
+
+    .secret-box {
+        width: 88vw !important;
+        height: 210px !important;
+        min-height: 210px !important;
+    }
+
+    .inside-message h1 {
+        font-size: 40px !important;
+    }
+
+    .inside-message p,
+    #subText {
+        font-size: 11px !important;
+    }
+
+    .moon {
+        top: 245px !important;
+        right: 7% !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+/* short height phones */
+@media (max-width: 600px) and (max-height: 700px) {
+    .intro-text {
+        transform: scale(0.92) !important;
+        transform-origin: top center !important;
+    }
+
+    .secret-box {
+        transform: scale(0.92) !important;
+        transform-origin: center !important;
+    }
+
+    .moon {
+        top: 225px !important;
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    .footer-text {
+        transform: scale(0.92) !important;
+    }
+} 
+/* =========================
+   FINAL CENTER + PHONE SAFE FIX
+   Paste this at the VERY BOTTOM
+========================= */
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* whole content center lock */
+.page {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+
+    padding: 28px 14px 18px !important;
+    box-sizing: border-box !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    z-index: 10 !important;
+    transform: none !important;
+}
+
+/* top box always center */
+.intro-text {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+
+    width: min(86vw, 390px) !important;
+    max-width: 390px !important;
+    margin: 0 auto !important;
+
+    padding: 12px 18px !important;
+    border-radius: 24px !important;
+    z-index: 20 !important;
+}
+
+/* message section center */
+.message-section {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: translateY(12px) !important;
+
+    width: 100% !important;
+    flex: 1 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 12px !important;
+    z-index: 15 !important;
+}
+
+/* message box center */
+.secret-box {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+
+    width: min(88vw, 460px) !important;
+    height: clamp(220px, 30vh, 280px) !important;
+    min-height: 220px !important;
+    max-height: 280px !important;
+    margin: 0 auto !important;
+}
+
+/* hint above message box */
+#boxOpenHint {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 0 auto 4px auto !important;
+
+    display: inline-block !important;
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 850 !important;
+    text-align: center !important;
+
+    padding: 5px 14px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 112, 172, 0.18) !important;
+    border: 1px solid rgba(255, 210, 230, 0.42) !important;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22) !important;
+}
+
+#boxOpenHint.hide,
+.message-section:has(.secret-box.open) #boxOpenHint {
+    display: none !important;
+}
+
+/* footer center */
+.footer-text {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+
+    max-width: 88vw !important;
+    margin: 0 auto !important;
+    z-index: 20 !important;
+}
+
+/* phone safe */
+@media (max-width: 600px) {
+    .page {
+        padding: 22px 12px 14px !important;
+    }
+
+    .intro-text {
+        width: 84vw !important;
+        max-width: 84vw !important;
+        padding: 11px 11px !important;
+        border-radius: 22px !important;
+    }
+
+    .intro-text h2 {
+        font-size: clamp(22px, 6.2vw, 28px) !important;
+        line-height: 1.14 !important;
+    }
+
+    .dedicated-text {
+        font-size: 9px !important;
+        padding: 4px 10px !important;
+        margin-bottom: 7px !important;
+    }
+
+    .message-section {
+        transform: translateY(8px) !important;
+        gap: 10px !important;
+    }
+
+    .secret-box {
+        width: 88vw !important;
+        height: clamp(210px, 31vh, 245px) !important;
+        min-height: 210px !important;
+        max-height: 245px !important;
+    }
+
+    .inside-message h1 {
+        font-size: clamp(40px, 12vw, 50px) !important;
+        white-space: nowrap !important;
+    }
+
+    .inside-message p,
+    #subText {
+        font-size: clamp(11px, 3.1vw, 14px) !important;
+        max-width: 88% !important;
+        white-space: normal !important;
+    }
+
+    .moon {
+        width: clamp(38px, 12vw, 54px) !important;
+        height: clamp(38px, 12vw, 54px) !important;
+        top: clamp(220px, 30svh, 315px) !important;
+        right: clamp(18px, 8vw, 40px) !important;
+        z-index: 1 !important;
+    }
+}
+
+/* very small phone */
+@media (max-width: 390px) and (max-height: 760px) {
+    .intro-text {
+        transform: scale(0.94) !important;
+        transform-origin: top center !important;
+    }
+
+    .secret-box {
+        height: 205px !important;
+        min-height: 205px !important;
+    }
+
+    .moon {
+        top: 235px !important;
+        width: 38px !important;
+        height: 38px !important;
+    }
+} 

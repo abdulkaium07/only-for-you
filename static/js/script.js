@@ -17,9 +17,14 @@ function openBox() {
     if (!secretBox) return;
 
     secretBox.classList.add("open");
-    createCelebration();
-}
 
+    const boxOpenHint = document.getElementById("boxOpenHint");
+    if (boxOpenHint) {
+        boxOpenHint.classList.add("hide");
+    }
+
+    createCelebration();
+} 
 function createCelebration() {
     const emojis = ["❤️", "💕", "💖", "💘", "✨", "🥰"];
     const count = isMobile ? 10 : 22;
