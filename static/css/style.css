@@ -2103,3 +2103,272 @@ body {
         display: none !important;
     }
 } 
+/* =========================
+   Inside Message Subtext Fix
+========================= */
+
+.inside-message p,
+#subText {
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.3px !important;
+    text-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.45),
+        0 0 12px rgba(255, 255, 255, 0.25) !important;
+}
+
+/* phone version */
+@media (max-width: 600px) {
+    .inside-message p,
+    #subText {
+        font-size: 14px !important;
+        color: #ffffff !important;
+        font-weight: 800 !important;
+    }
+} 
+/* =========================
+   More Realistic Ocean Water
+========================= */
+
+.ocean {
+    height: 36% !important;
+    overflow: hidden !important;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(120, 170, 210, 0.28) 0%,
+            rgba(35, 100, 155, 0.55) 10%,
+            rgba(11, 67, 116, 0.92) 38%,
+            rgba(4, 35, 72, 1) 72%,
+            rgba(2, 19, 44, 1) 100%
+        ) !important;
+}
+
+/* bright horizon line where sky meets water */
+.ocean::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 46px;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(180, 220, 255, 0.40),
+            rgba(105, 165, 215, 0.18),
+            transparent
+        );
+    filter: blur(2px);
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+/* realistic water ripple lines */
+.ocean::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-radial-gradient(
+            ellipse at 50% 120%,
+            rgba(255, 255, 255, 0.13) 0px,
+            rgba(255, 255, 255, 0.08) 2px,
+            transparent 4px,
+            transparent 18px
+        ),
+        repeating-linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.055) 0px,
+            transparent 2px,
+            transparent 9px
+        );
+    opacity: 0.28;
+    transform: perspective(600px) rotateX(58deg) scaleX(1.45) translateY(-65px);
+    animation: realisticWaterMove 7s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* moon reflection on water */
+.moon-reflection {
+    position: absolute !important;
+    top: -2% !important;
+    left: 84% !important;
+    width: 210px !important;
+    height: 120% !important;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 244, 190, 0.50) 0%,
+            rgba(255, 224, 145, 0.30) 18%,
+            rgba(255, 240, 190, 0.16) 40%,
+            rgba(255, 255, 255, 0.07) 65%,
+            transparent 100%
+        ) !important;
+    filter: blur(13px) !important;
+    opacity: 0.62 !important;
+    animation: realisticMoonReflection 5.8s ease-in-out infinite !important;
+    pointer-events: none !important;
+}
+
+/* moving soft wave layers */
+.wave-layer,
+.water-ripple,
+.wave {
+    position: absolute !important;
+    left: -15% !important;
+    width: 130% !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    pointer-events: none !important;
+}
+
+.wave-layer-1,
+.ripple-one,
+.wave-one {
+    top: 10% !important;
+    height: 28px !important;
+    opacity: 0.34 !important;
+    filter: blur(0.8px) !important;
+    animation: realWaveOne 5.8s ease-in-out infinite !important;
+}
+
+.wave-layer-2,
+.ripple-two,
+.wave-two {
+    top: 29% !important;
+    height: 45px !important;
+    opacity: 0.25 !important;
+    filter: blur(1.2px) !important;
+    animation: realWaveTwo 8s ease-in-out infinite reverse !important;
+}
+
+.wave-layer-3,
+.ripple-three,
+.wave-three {
+    top: 52% !important;
+    height: 70px !important;
+    opacity: 0.16 !important;
+    filter: blur(1.8px) !important;
+    animation: realWaveThree 10s ease-in-out infinite !important;
+}
+
+/* small shine patches on water */
+.wave-shine {
+    position: absolute !important;
+    width: 220px !important;
+    height: 34px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 235, 170, 0.13) !important;
+    filter: blur(14px) !important;
+    opacity: 0.45 !important;
+    pointer-events: none !important;
+}
+
+.wave-shine-1 {
+    top: 17% !important;
+    left: 72% !important;
+    animation: waterShineMove 6s ease-in-out infinite !important;
+}
+
+.wave-shine-2 {
+    top: 42% !important;
+    left: 18% !important;
+    opacity: 0.22 !important;
+    animation: waterShineMove 8s ease-in-out infinite reverse !important;
+}
+
+@keyframes realisticWaterMove {
+    0%, 100% {
+        transform: perspective(600px) rotateX(58deg) scaleX(1.45) translateX(0) translateY(-65px);
+        opacity: 0.23;
+    }
+
+    50% {
+        transform: perspective(600px) rotateX(58deg) scaleX(1.5) translateX(35px) translateY(-60px);
+        opacity: 0.34;
+    }
+}
+
+@keyframes realisticMoonReflection {
+    0%, 100% {
+        transform: translateX(-50%) scaleX(0.92);
+        opacity: 0.48;
+    }
+
+    50% {
+        transform: translateX(-50%) scaleX(1.12);
+        opacity: 0.72;
+    }
+}
+
+@keyframes realWaveOne {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(38px) translateY(-4px);
+    }
+}
+
+@keyframes realWaveTwo {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-32px) translateY(5px);
+    }
+}
+
+@keyframes realWaveThree {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(25px) translateY(-3px);
+    }
+}
+
+@keyframes waterShineMove {
+    0%, 100% {
+        transform: translateX(0) scaleX(1);
+        opacity: 0.28;
+    }
+
+    50% {
+        transform: translateX(28px) scaleX(1.18);
+        opacity: 0.50;
+    }
+}
+
+/* phone safe version */
+@media (max-width: 600px) {
+    .ocean {
+        height: 34% !important;
+    }
+
+    .ocean::after {
+        opacity: 0.20 !important;
+        animation-duration: 9s !important;
+    }
+
+    .moon-reflection {
+        left: 78% !important;
+        width: 120px !important;
+        opacity: 0.48 !important;
+    }
+
+    .wave-layer-3,
+    .ripple-three,
+    .wave-three {
+        display: none !important;
+    }
+
+    .wave-shine {
+        opacity: 0.26 !important;
+    }
+} 
